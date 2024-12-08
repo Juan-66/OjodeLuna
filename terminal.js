@@ -37,7 +37,7 @@ async function executeCommand(command) {
     try {
         if (command.startsWith('getUsers')) {
             // Obtener los usuarios desde la API
-            const response = await fetch(apiUrl + '/getUsers');
+            const response = await fetch(`${apiUrl}/getUsers`);
             const data = await response.json();
             if (data && Array.isArray(data)) {
                 addToTerminal('Usuarios obtenidos:', 'output');
@@ -52,7 +52,7 @@ async function executeCommand(command) {
             const parts = command.split(' ');
             if (parts.length === 4) {
                 const [_, id, score, balance] = parts;
-                const response = await fetch(apiUrl + '/updateUser', {
+                const response = await fetch(`${apiUrl}/updateUser`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ id, score, balance })
